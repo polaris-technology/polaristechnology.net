@@ -1,0 +1,47 @@
+baseURL: https://polaristechnology.net
+languageCode: en-us
+title: "Polaris Technology Group"
+theme: spectral
+params:
+  fancyTitle: "Polaris Technology Group"
+  copyright: Polaris Technology Group
+  one:
+    enable: true
+    title: 'Business Solutions'
+    body: Meeting the needs of a growing business
+  two:
+    enable: true
+    section:
+      - title: 'Experience Reality Before it Happens'
+        body: Polaris Technology Group is comitted to enhacning the activities of daily living of people with visual disabilities by creating  virtual-reality based solution to help alleviate various barriers to success
+  three:
+    enable: true
+    title: Train Your Workforce
+    body: Leverage Polaris' 360° video-based training platform to enhance workforce training capabilities. Allow your employees to experience simulated situations to learn how to better handle real-world emergencies
+  contact:
+    enable: true
+    title: Contact
+    body: Leave us a message.
+    phone: "+49 (0) 030 000 000"
+    address: "1234 Somewhere Road<br />Some Place, Some State 0000<br />Some Country"
+    email: "josephdown@polaristechnology.net"
+    subject: "New Submission!"
+    formspree_form_id: "example_invalid"
+# menus:
+#   main:
+#     - name: Home
+#       url: '/'
+#       weight: 1
+#       identifier: home
+#     - name: About
+#       url: '/'
+#       weight: 2
+#       identifier: about
+#     - name: Services
+#       url: '/'
+#       weight: 3
+#       identifier: services
+#     - name: Contact
+#       url: '/'
+#       weight: 4
+#       identifier: contact
