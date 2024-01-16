@@ -22,11 +22,9 @@ params:
     enable: true
     title: Contact
     body: Leave us a message.
-    phone: "+49 (0) 030 000 000"
-    address: "1234 Somewhere Road<br />Some Place, Some State 0000<br />Some Country"
     email: "josephdown@polaristechnology.net"
     subject: "New Submission!"
-    formspree_form_id: "example_invalid"
+    formspree_form_id: "mrgnbogo"
 # menus:
 #   main:
 #     - name: Home
