@@ -1,0 +1,12 @@
+{{ partial "header.html" . }}
+<article id="main">
+  <header {{ with .Params.image }}style="background-image: url('{{ . }}')"{{ end }}>
+    <h2>Ready to get to where you belong?</h2>
+	</header>
+	<section class="wrapper style5">
+		<div class="inner">
+            Thanks for checking us out! We are still calibrating the compasses and polishing the map to help you find your way. Please check back soon to start your journey to where you belong!
+		</div>
+	</section>
+</article>
+{{ partial "footer.html" . }}
