@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "ZXHTQ9S55J.com.polaris.indoorNav",
+        "paths": [ "/loc/*" ]
+      }
+    ]
+  }
+}
