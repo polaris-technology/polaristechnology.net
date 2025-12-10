@@ -1,6 +1,6 @@
 {{ partial "header.html" . }}
 <meta name="apple-itunes-app" content="app-id=ZXHTQ9S55J.com.polaris.indoorNav, app-argument={{ .Permalink }}">
-<meta property="polaris:coordinates" content="lat={{ .Params.lat }}&lon={{ .Params.lon }}" />
+<meta property="polaris:coordinates" content="lat={{ .Params.lat }}&lon={{ .Params.lon }}&floor={{ .Params.floor }}" />
 <article id="main">
   <header {{ with .Params.image }}style="background-image: url('{{ . }}')"{{ end }}>
     <h2>Ready to get to where you belong?</h2>
