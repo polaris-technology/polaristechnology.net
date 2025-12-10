@@ -4,6 +4,7 @@
   "location_id": "{{ .Title }}",
   "coordinates": {
     "lat": "{{ .Params.lat }}",
-    "lon": "{{ .Params.lon }}"
+    "lon": "{{ .Params.lon }}",
+    "floor": "{{ .Params.floor }}"
   }
 }
