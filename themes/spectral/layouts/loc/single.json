@@ -1,6 +1,6 @@
 {
   "title": "{{ .Params.site_id }} - {{ .Params.desc }}",
-  "permalink": {{ with .OutputFormats.Get "HTML" }}{{ .Permalink | jsonify }}{{ end}} }}
+  "permalink": {{ with .OutputFormats.Get "HTML" }}{{ .Permalink | jsonify }}{{ end}},
   "location_id": "{{ .Title }}",
   "coordinates": {
     "lat": "{{ .Params.lat }}",
