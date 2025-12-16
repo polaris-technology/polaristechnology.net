@@ -1,0 +1,52 @@
+// Bootstrap variable overrides.
+$primary: map-get($apollo-colors, "primary");
+$secondary: map-get($apollo-colors, "secondary");
+$success: map-get($apollo-colors, "success");
+$info: map-get($apollo-colors, "info");
+$warning: map-get($apollo-colors, "warning");
+$danger: map-get($apollo-colors, "danger");
+$light: map-get($apollo-colors, "light");
+$dark: map-get($apollo-colors, "dark");
+
+$font-family-sans-serif: $apollo-font-stack;
+$headings-font-family: $apollo-font-heading;
+$font-family-monospace: $apollo-font-mono;
+
+$border-radius: map-get($apollo-radii, "md");
+$border-radius-sm: map-get($apollo-radii, "sm");
+$border-radius-lg: map-get($apollo-radii, "lg");
+
+$spacers: $apollo-spacers;
+
+// Enhanced typography
+$font-size-base: 1rem;
+$h1-font-size: 2.5rem;
+$h2-font-size: 2rem;
+$h3-font-size: 1.75rem;
+$h4-font-size: 1.5rem;
+$h5-font-size: 1.25rem;
+$h6-font-size: 1rem;
+
+$headings-margin-bottom: 1rem;
+$headings-font-weight: 600;
+$headings-line-height: 1.2;
+
+// Enhanced navbar
+$navbar-padding-y: 1rem;
+$navbar-dark-color: rgba(255, 255, 255, 0.85);
+$navbar-dark-hover-color: rgba(255, 255, 255, 1);
+$navbar-dark-active-color: rgba(255, 255, 255, 1);
+$navbar-light-color: rgba(0, 0, 0, 0.7);
+$navbar-light-hover-color: rgba(0, 0, 0, 0.9);
+$navbar-light-active-color: rgba(0, 0, 0, 1);
+
+// Button enhancements
+$btn-padding-y: 0.625rem;
+$btn-padding-x: 1.5rem;
+$btn-font-weight: 500;
+$btn-border-radius: map-get($apollo-radii, "md");
+
+// Card enhancements
+$card-border-width: 0;
+$card-border-radius: map-get($apollo-radii, "lg");
+$card-box-shadow: $apollo-card-shadow;

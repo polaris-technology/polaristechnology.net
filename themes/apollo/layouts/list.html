@@ -1,0 +1,30 @@
+{{ define "main" }}
+<header class="mb-4">
+  <h1 class="display-5">{{ .Title }}</h1>
+  {{ with .Description }}<p class="lead text-muted">{{ . }}</p>{{ end }}
+</header>
+
+{{ $paginator := .Paginate .Pages }}
+{{ if $paginator.Pages }}
+  <div class="list-group">
+    {{ range $paginator.Pages }}
+      <a class="list-group-item list-group-item-action" href="{{ .RelPermalink }}">
+        <div class="d-flex w-100 justify-content-between">
+          <h2 class="h5 mb-1">{{ .Title }}</h2>
+          {{ with .Date }}<small class="text-muted">{{ .Format "Jan 2, 2006" }}</small>{{ end }}
+        </div>
+        {{ with .Params.summary }}<p class="mb-1 text-muted">{{ . }}</p>{{ else }}{{ with .Summary }}<p class="mb-1 text-muted">{{ . | plainify }}</p>{{ end }}{{ end }}
+      </a>
+    {{ end }}
+  </div>
+
+  <nav aria-label="Pagination" class="mt-4">
+    <ul class="pagination">
+      {{ if $paginator.HasPrev }}<li class="page-item"><a class="page-link" href="{{ $paginator.Prev.URL }}">Newer</a></li>{{ end }}
+      {{ if $paginator.HasNext }}<li class="page-item"><a class="page-link" href="{{ $paginator.Next.URL }}">Older</a></li>{{ end }}
+    </ul>
+  </nav>
+{{ else }}
+  <p>No entries found.</p>
+{{ end }}
+{{ end }}

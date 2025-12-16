@@ -1,0 +1,326 @@
+// Component-level additions live here.
+
+// Page Header
+.page-header {
+  margin-bottom: map-get($spacers, 4);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding-bottom: map-get($spacers, 2);
+  
+  [data-bs-theme="dark"] & {
+    border-bottom-color: $apollo-dark-border;
+  }
+}
+
+// Content Images
+.content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: $border-radius;
+}
+
+// Navbar Enhancements
+.navbar {
+  transition: $apollo-transition-base;
+  
+  &.scrolled {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand {
+    transition: $apollo-transition-base;
+    
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+  
+  .nav-link {
+    position: relative;
+    transition: $apollo-transition-base;
+    font-weight: 500;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background-color: var(--bs-primary);
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+    
+    &:hover::after,
+    &.active::after {
+      width: 100%;
+      left: 0;
+    }
+  }
+}
+
+// Hero Section
+.hero-section {
+  padding: 6rem 0;
+  min-height: $apollo-hero-height;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  
+  .min-vh-75 {
+    min-height: 75vh;
+  }
+  
+  .hero-image-wrapper {
+    img {
+      animation: float 6s ease-in-out infinite;
+    }
+  }
+}
+
+.bg-gradient-primary {
+  background: linear-gradient(135deg, var(--bs-primary) 0%, darken($primary, 15%) 100%);
+}
+
+.bg-gradient-secondary {
+  background: linear-gradient(135deg, var(--bs-secondary) 0%, darken($secondary, 10%) 100%);
+}
+
+// Feature Cards
+.feature-card {
+  transition: $apollo-transition-base;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $apollo-card-shadow-hover !important;
+  }
+  
+  .feature-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(var(--bs-primary-rgb), 0.1);
+    border-radius: map-get($apollo-radii, "lg");
+    transition: $apollo-transition-base;
+  }
+  
+  &:hover .feature-icon {
+    background-color: rgba(var(--bs-primary-rgb), 0.2);
+    transform: scale(1.1);
+  }
+}
+
+// Pricing Cards
+.pricing-card {
+  transition: $apollo-transition-base;
+  position: relative;
+  
+  &.featured {
+    border: 2px solid var(--bs-primary);
+    transform: scale(1.05);
+    z-index: 1;
+  }
+  
+  &:not(.featured):hover {
+    transform: translateY(-8px);
+    box-shadow: $apollo-card-shadow-hover !important;
+  }
+  
+  .pricing-amount {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+}
+
+// Testimonial Cards
+.testimonial-card {
+  transition: $apollo-transition-base;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $apollo-card-shadow-hover !important;
+  }
+  
+  blockquote {
+    font-style: italic;
+    position: relative;
+    
+    &::before {
+      content: '"';
+      font-size: 4rem;
+      line-height: 1;
+      position: absolute;
+      top: -1rem;
+      left: -1rem;
+      opacity: 0.1;
+      font-weight: bold;
+    }
+  }
+}
+
+// Use Case Cards
+.use-case-card {
+  transition: $apollo-transition-base;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $apollo-card-shadow-hover !important;
+  }
+}
+
+// News Cards
+.news-card {
+  transition: $apollo-transition-base;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $apollo-card-shadow-hover !important;
+  }
+  
+  .stretched-link::after {
+    z-index: 1;
+  }
+}
+
+// Customer Logos
+.customer-logo {
+  img {
+    max-height: 60px;
+    width: auto;
+    opacity: 0.7;
+    transition: $apollo-transition-base;
+    
+    &:hover {
+      opacity: 1;
+    }
+  }
+  
+  .logo-placeholder {
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.grayscale {
+  filter: grayscale(100%);
+  
+  &:hover {
+    filter: grayscale(0%);
+  }
+}
+
+// Logo Placeholders
+.logo-placeholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  transition: $apollo-transition-base;
+}
+
+// Section Spacing
+section {
+  scroll-margin-top: 80px;
+}
+
+.py-6 {
+  padding-top: $apollo-section-padding !important;
+  padding-bottom: $apollo-section-padding !important;
+}
+
+// Buttons
+.btn {
+  transition: $apollo-transition-base;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.gap-3 {
+  gap: 1rem !important;
+}
+
+// Animations
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  
+  &.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Dark Mode Specific Styles
+[data-bs-theme="dark"] {
+  .bg-light {
+    background-color: $apollo-dark-surface !important;
+  }
+  
+  .text-muted {
+    color: $apollo-dark-text-muted !important;
+  }
+  
+  .navbar-light {
+    background-color: $apollo-dark-surface !important;
+    
+    .navbar-brand,
+    .nav-link {
+      color: $apollo-dark-text !important;
+      
+      &:hover {
+        color: white !important;
+      }
+    }
+  }
+  
+  .card {
+    background-color: $apollo-dark-surface;
+    color: $apollo-dark-text;
+  }
+  
+  .site-footer {
+    background-color: $apollo-dark-bg !important;
+  }
+  
+  .border {
+    border-color: $apollo-dark-border !important;
+  }
+}
+
+// Accessibility
+.btn:focus-visible,
+.nav-link:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--bs-primary);
+  outline-offset: 2px;
+}
+
+// Print Styles
+@media print {
+  .navbar,
+  .site-footer,
+  .btn {
+    display: none !important;
+  }
+}

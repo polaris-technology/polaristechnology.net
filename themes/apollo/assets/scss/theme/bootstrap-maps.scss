@@ -1,0 +1,7 @@
+// Extend Bootstrap theme maps.
+$theme-colors: map-merge(
+  $theme-colors,
+  (
+    "accent": map-get($apollo-colors, "accent"),
+  )
+);

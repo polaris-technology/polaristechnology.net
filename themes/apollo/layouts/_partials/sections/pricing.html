@@ -1,0 +1,54 @@
+{{- $section := .section -}}
+{{- if $section.enable -}}
+<section class="pricing-section py-6" id="pricing" aria-labelledby="pricing-title">
+  <div class="container">
+    {{- with $section.title -}}
+    <div class="row mb-5">
+      <div class="col-lg-8 mx-auto text-center">
+        <h2 id="pricing-title" class="display-5 fw-bold mb-3">{{ . }}</h2>
+        {{- with $section.description -}}
+        <p class="lead text-muted">{{ . }}</p>
+        {{- end -}}
+      </div>
+    </div>
+    {{- end -}}
+    
+    {{- with $section.tiers -}}
+    <div class="row g-4 justify-content-center">
+      {{- range . -}}
+      <div class="col-lg-4">
+        <div class="pricing-card card h-100 border-0 shadow{{ if .featured }}-lg featured{{ else }}-sm{{ end }}">
+          {{- if .featured -}}
+          <div class="card-header bg-primary text-white text-center py-3 border-0">
+            <span class="badge bg-white text-primary">Most Popular</span>
+          </div>
+          {{- end -}}
+          <div class="card-body p-4 d-flex flex-column">
+            <h3 class="h4 fw-bold mb-3">{{ .name }}</h3>
+            <div class="pricing-amount mb-4">
+              <span class="display-5 fw-bold">{{ .price }}</span>
+              {{- with .period -}}
+              <span class="text-muted">{{ . }}</span>
+              {{- end -}}
+            </div>
+            <p class="text-muted mb-4">{{ .description }}</p>
+            <ul class="list-unstyled mb-4 flex-grow-1">
+              {{- range .features -}}
+              <li class="mb-2">
+                <i class="fas fa-check text-success me-2" aria-hidden="true"></i>
+                {{ . }}
+              </li>
+              {{- end -}}
+            </ul>
+            <a href="{{ .cta_url | default "#contact" }}" class="btn btn-{{ if .featured }}primary{{ else }}outline-primary{{ end }} btn-lg w-100">
+              {{ .cta_text | default "Get Started" }}
+            </a>
+          </div>
+        </div>
+      </div>
+      {{- end -}}
+    </div>
+    {{- end -}}
+  </div>
+</section>
+{{- end -}}

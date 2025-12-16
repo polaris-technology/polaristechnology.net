@@ -1,0 +1,40 @@
+{{- $section := .section -}}
+{{- if $section.enable -}}
+<section class="faq-section py-6" id="faq" aria-labelledby="faq-title">
+  <div class="container">
+    {{- with $section.title -}}
+    <div class="row mb-5">
+      <div class="col-lg-8 mx-auto text-center">
+        <h2 id="faq-title" class="display-5 fw-bold mb-3">{{ . }}</h2>
+        {{- with $section.description -}}
+        <p class="lead text-muted">{{ . }}</p>
+        {{- end -}}
+      </div>
+    </div>
+    {{- end -}}
+    
+    {{- with $section.items -}}
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="accordion accordion-flush" id="faqAccordion">
+          {{- range $index, $item := . -}}
+          <div class="accordion-item border rounded mb-3">
+            <h3 class="accordion-header" id="faq-heading-{{ $index }}">
+              <button class="accordion-button{{ if ne $index 0 }} collapsed{{ end }}" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-{{ $index }}" aria-expanded="{{ if eq $index 0 }}true{{ else }}false{{ end }}" aria-controls="faq-collapse-{{ $index }}">
+                {{ .question }}
+              </button>
+            </h3>
+            <div id="faq-collapse-{{ $index }}" class="accordion-collapse collapse{{ if eq $index 0 }} show{{ end }}" aria-labelledby="faq-heading-{{ $index }}" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                {{ .answer | markdownify }}
+              </div>
+            </div>
+          </div>
+          {{- end -}}
+        </div>
+      </div>
+    </div>
+    {{- end -}}
+  </div>
+</section>
+{{- end -}}

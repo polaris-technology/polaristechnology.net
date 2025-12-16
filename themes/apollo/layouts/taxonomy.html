@@ -1,0 +1,19 @@
+{{ define "main" }}
+<header class="mb-4">
+  <h1 class="display-5">{{ .Title }}</h1>
+  {{ with .Description }}<p class="lead text-muted">{{ . }}</p>{{ end }}
+</header>
+
+{{ if .Data.Terms }}
+  <div class="list-group">
+    {{ range .Data.Terms.Alphabetical }}
+      <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="{{ .Page.RelPermalink }}">
+        <span>{{ .Page.LinkTitle }}</span>
+        <span class="badge bg-secondary rounded-pill">{{ .Count }}</span>
+      </a>
+    {{ end }}
+  </div>
+{{ else }}
+  <p>No taxonomy terms found.</p>
+{{ end }}
+{{ end }}

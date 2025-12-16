@@ -1,0 +1,10 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{- $isHome := .IsHome -}}
+{{- $title := cond $isHome .Site.Title (printf "%s | %s" .Title .Site.Title) -}}
+<title>{{ $title }}</title>
+{{- with .Description }}<meta name="description" content="{{ . }}">{{ else with .Summary }}<meta name="description" content="{{ . | plainify | truncate 160 }}">{{ end -}}
+{{- with .Permalink }}<link rel="canonical" href="{{ . }}">{{ end -}}
+<meta property="og:title" content="{{ $title }}">
+{{- with .Permalink }}<meta property="og:url" content="{{ . }}">{{ end -}}
+{{- with .Site.Title }}<meta property="og:site_name" content="{{ . }}">{{ end -}}

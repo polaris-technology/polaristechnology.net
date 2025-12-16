@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.Lang | default "en" }}" data-bs-theme="auto">
+<head>
+  {{ partial "head/meta.html" . }}
+  {{ partial "head/css.html" . }}
+  <script>
+    // Auto-detect dark mode preference
+    (function() {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-bs-theme', prefersDark ? 'dark' : 'light');
+    })();
+  </script>
+</head>
+<body class="page-{{ .Kind }} type-{{ .Type | default "page" }}" data-page-kind="{{ .Kind }}">
+  <a class="visually-hidden-focusable skip-link" href="#main-content">Skip to main content</a>
+
+  <header>
+    {{ partial "nav.html" . }}
+  </header>
+
+  <main id="main-content"{{ if eq .Kind "home" }} class="home-main"{{ else }} class="container my-5"{{ end }}>
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  {{ partial "footer.html" . }}
+
+  {{ partial "scripts.html" . }}
+</body>
+</html>

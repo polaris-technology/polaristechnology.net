@@ -1,0 +1,9 @@
+name: Apollo
+license: MIT
+licenselink: https://opensource.org/licenses/MIT
+description: A minimal Bootstrap 5 Hugo theme scaffold focused on SCSS-first workflow.
+tags:
+  - bootstrap
+  - scss
+  - starter
+min_version: 0.118.0

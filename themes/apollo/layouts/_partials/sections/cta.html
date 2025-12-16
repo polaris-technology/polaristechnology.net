@@ -1,0 +1,29 @@
+{{- $section := .section -}}
+{{- if $section.enable -}}
+<section class="cta-section bg-primary text-white py-6" id="cta" aria-labelledby="cta-title">
+  <div class="container">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-8">
+        <h2 id="cta-title" class="display-5 fw-bold mb-4">
+          {{ $section.title | default "Ready to Transform Your Indoor Navigation?" }}
+        </h2>
+        <p class="lead mb-4">
+          {{ $section.description | default "Join the future of indoor wayfinding with Polaris." }}
+        </p>
+        <div class="d-flex flex-wrap gap-3 justify-content-center">
+          {{- with $section.cta_primary -}}
+          <a href="{{ .url | default "#contact" }}" class="btn btn-light btn-lg">
+            {{ .text | default "Get Started" }}
+          </a>
+          {{- end -}}
+          {{- with $section.cta_secondary -}}
+          <a href="{{ .url | default "#contact" }}" class="btn btn-outline-light btn-lg">
+            {{ .text | default "Contact Sales" }}
+          </a>
+          {{- end -}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{- end -}}

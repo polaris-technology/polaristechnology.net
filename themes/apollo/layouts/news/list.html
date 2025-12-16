@@ -1,0 +1,91 @@
+{{ define "main" }}
+<div class="news-section">
+  <header class="page-header mb-5 pb-4 border-bottom">
+    <h1 class="display-4 fw-bold">{{ .Title | default "News & Updates" }}</h1>
+    {{ with .Description }}<p class="lead text-muted">{{ . }}</p>{{ end }}
+  </header>
+
+  {{ $paginator := .Paginate (where .Site.RegularPages "Section" "news") }}
+  {{ if $paginator.Pages }}
+    <div class="row g-4 mb-5">
+      {{ range $paginator.Pages }}
+        <div class="col-lg-4 col-md-6">
+          <article class="news-card card h-100 border-0 shadow-sm">
+            {{ with .Params.featured_image }}
+              <img src="{{ . }}" class="card-img-top" alt="{{ $.Title }}" loading="lazy">
+            {{ else }}
+              <div class="card-img-top bg-gradient-secondary" style="height: 200px;"></div>
+            {{ end }}
+            <div class="card-body d-flex flex-column">
+              {{ with .Date }}
+                <time datetime="{{ .Format "2006-01-02" }}" class="text-muted small mb-2">
+                  {{ .Format "January 2, 2006" }}
+                </time>
+              {{ end }}
+              <h2 class="h5 mb-3">
+                <a href="{{ .RelPermalink }}" class="text-decoration-none text-dark stretched-link">
+                  {{ .Title }}
+                </a>
+              </h2>
+              {{ with .Params.summary }}
+                <p class="text-muted mb-0 flex-grow-1">{{ . }}</p>
+              {{ else with .Summary }}
+                <p class="text-muted mb-0 flex-grow-1">{{ . | plainify | truncate 120 }}</p>
+              {{ end }}
+            </div>
+            {{ with .Params.categories }}
+              <div class="card-footer bg-transparent border-top-0">
+                {{ range . }}
+                  <span class="badge bg-primary me-1">{{ . }}</span>
+                {{ end }}
+              </div>
+            {{ end }}
+          </article>
+        </div>
+      {{ end }}
+    </div>
+
+    {{ if or $paginator.HasPrev $paginator.HasNext }}
+      <nav aria-label="News pagination" class="mt-5">
+        <ul class="pagination justify-content-center">
+          {{ if $paginator.HasPrev }}
+            <li class="page-item">
+              <a class="page-link" href="{{ $paginator.Prev.URL }}" aria-label="Previous page">
+                <span aria-hidden="true">&laquo;</span> Newer
+              </a>
+            </li>
+          {{ end }}
+          
+          {{ $paginator := .Paginator }}
+          {{ $adjacent := 2 }}
+          {{ $maxLinks := (add (mul $adjacent 2) 1) }}
+          {{ $lowerBound := (add $paginator.PageNumber (mul $adjacent -1)) }}
+          {{ $upperBound := (add $paginator.PageNumber $adjacent) }}
+          
+          {{ range $paginator.Pagers }}
+            {{ if and (ge .PageNumber $lowerBound) (le .PageNumber $upperBound) }}
+              <li class="page-item{{ if eq . $paginator }} active{{ end }}">
+                <a class="page-link" href="{{ .URL }}"{{ if eq . $paginator }} aria-current="page"{{ end }}>
+                  {{ .PageNumber }}
+                </a>
+              </li>
+            {{ end }}
+          {{ end }}
+          
+          {{ if $paginator.HasNext }}
+            <li class="page-item">
+              <a class="page-link" href="{{ $paginator.Next.URL }}" aria-label="Next page">
+                Older <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </nav>
+    {{ end }}
+  {{ else }}
+    <div class="alert alert-info" role="alert">
+      <p class="mb-0">No news articles found. Check back soon for updates!</p>
+    </div>
+  {{ end }}
+</div>
+{{ end }}
