@@ -1,0 +1,42 @@
+{{- $menuName := site.Params.navMenu | default site.Params.mainMenu | default "main" -}}
+{{- $menu := index site.Menus $menuName -}}
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm" aria-label="Main navigation">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="{{ "/" | relURL }}">
+      {{- with .Site.Params.logo -}}
+      <img src="{{ . }}" alt="{{ $.Site.Title }}" height="32" class="d-inline-block align-text-top me-2" loading="eager">
+      {{- else -}}
+      <div class="logo-placeholder bg-primary text-white rounded px-3 py-1 me-2">
+        <span class="fw-bold">{{ substr .Site.Title 0 1 }}</span>
+      </div>
+      {{- end -}}
+      <span class="fw-semibold">{{ .Site.Title }}</span>
+    </a>
+    
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      {{- $current := . -}}
+      {{- with $menu -}}
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        {{- range . -}}
+        <li class="nav-item">
+          {{- $active := or ($current.IsMenuCurrent $menuName .) ($current.HasMenuCurrent $menuName .) -}}
+          <a class="nav-link{{ if $active }} active{{ end }}" href="{{ .URL }}" {{ if $active }}aria-current="page"{{ end }}>
+            {{ .Name }}
+          </a>
+        </li>
+        {{- end -}}
+      </ul>
+      {{- end -}}
+      
+      {{- with .Site.Params.nav_cta -}}
+      <div class="d-flex ms-lg-3">
+        <a href="{{ .url | default "#contact" }}" class="btn btn-primary">{{ .text | default "Get Started" }}</a>
+      </div>
+      {{- end -}}
+    </div>
+  </div>
+</nav>

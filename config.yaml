@@ -1,45 +1,138 @@
 baseURL: https://polaristechnology.net
 languageCode: en-us
 title: "Polaris Technology Group"
-theme: spectral
+theme: apollo
+
+# Pagination
+pagination:
+  pagerSize: 9
+
+# Taxonomies
+taxonomies:
+  category: categories
+  tag: tags
+
+# Site parameters
 params:
-  fancyTitle: "Polaris Technology Group"
-  copyright: Polaris Technology Group
-  one:
-    enable: true
-    title: 'Business Solutions'
-    body: Meeting the needs of a growing business
-  two:
-    enable: true
-    section:
-      - title: 'Experience Reality Before it Happens'
-        body: Polaris Technology Group is comitted to enhacning the activities of daily living of people with visual disabilities by creating  virtual-reality based solution to help alleviate various barriers to success
-  three:
-    enable: true
-    title: Train Your Workforce
-    body: Leverage Polaris' 360° video-based training platform to enhance workforce training capabilities. Allow your employees to experience simulated situations to learn how to better handle real-world emergencies
+  # Branding
+  # logo: "/images/logo.png"  # Add your logo here
+  copyright: "Polaris Technology Group"
+  footer_description: "Indoor navigation solutions for the modern world."
+  
+  # Navigation CTA button
+  nav_cta:
+    text: "Get Started"
+    url: "#contact"
+  
+  # Navigation CTA button (optional)
+  # nav_cta:
+  #   text: "Get Started"
+  #   url: "#contact"
+  
+  # Social media links (optional)
+  social:
+    # twitter: "https://twitter.com/polaristech"
+    # linkedin: "https://linkedin.com/company/polaristech"
+    # github: "https://github.com/polaris-technology"
+  
+  # Footer menu columns (optional)
+  footer_menus:
+    - title: "Product"
+      links:
+        - name: "Features"
+          url: "/#features"
+        - name: "Pricing"
+          url: "/#pricing"
+        - name: "Use Cases"
+          url: "/#use-cases"
+        - name: "FAQ"
+          url: "/#faq"
+    - title: "Company"
+      links:
+        - name: "About"
+          url: "/about"
+        - name: "News"
+          url: "/news"
+        - name: "Contact"
+          url: "/#contact"
+    - title: "Resources"
+      links:
+        - name: "Documentation"
+          url: "/docs"
+        - name: "Support"
+          url: "/support"
+        - name: "API"
+          url: "/api"
+    - title: "Legal"
+      links:
+        - name: "Privacy"
+          url: "/privacy"
+        - name: "Terms"
+          url: "/terms"
+  
+  # Footer legal links (optional)
+  footer_legal_links:
+    - name: "Privacy Policy"
+      url: "/privacy"
+    - name: "Terms of Service"
+      url: "/terms"
+  
+  # Contact information
   contact:
-    enable: true
-    title: Contact
-    body: Leave us a message.
     email: "josephdown@polaristechnology.net"
-    subject: "New Submission!"
-    formspree_form_id: "mrgnbogo"
-# menus:
-#   main:
-#     - name: Home
-#       url: '/'
-#       weight: 1
-#       identifier: home
-#     - name: About
-#       url: '/'
-#       weight: 2
-#       identifier: about
-#     - name: Services
-#       url: '/'
-#       weight: 3
-#       identifier: services
-#     - name: Contact
-#       url: '/'
-#       weight: 4
-#       identifier: contact
+
+# Navigation menu (required for nav to display)
+menus:
+  main:
+    - name: Features
+      url: "/#features"
+      weight: 1
+    - name: Use Cases
+      url: "/#use-cases"
+      weight: 2
+    - name: Pricing
+      url: "/#pricing"
+      weight: 3
+    - name: About
+      url: "/about"
+      weight: 4
+    - name: News
+      url: "/news"
+      weight: 5
+    - name: Contact
+      url: "/#contact"
+      weight: 6
+
+# Markup configuration
+markup:
+  goldmark:
+    renderer:
+      unsafe: true  # Allow HTML in markdown
+  highlight:
+    style: monokai
+    lineNos: false
+    lineNumbersInTable: false
+
+# Output formats
+outputs:
+  home:
+    - HTML
+    - RSS
+  section:
+    - HTML
+    - RSS
+
+# Privacy configuration
+privacy:
+  googleAnalytics:
+    anonymizeIP: true
+    respectDoNotTrack: true
+  youtube:
+    privacyEnhanced: true
+
+# Security
+security:
+  funcs:
+    getenv:
+      - ^HUGO_
+      - ^CI$

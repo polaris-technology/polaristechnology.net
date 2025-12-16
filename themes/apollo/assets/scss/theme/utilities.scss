@@ -162,7 +162,7 @@
 }
 
 // Dark mode prose adjustments
-[data-bs-theme="dark"] {
+@media (prefers-color-scheme: dark) {
   .prose,
   .content {
     h2 {

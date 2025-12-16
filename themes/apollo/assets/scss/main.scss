@@ -18,9 +18,13 @@
 @import "../vendor/bootstrap/scss/forms";
 @import "../vendor/bootstrap/scss/nav";
 @import "../vendor/bootstrap/scss/navbar";
+@import "../vendor/bootstrap/scss/accordion";
+@import "../vendor/bootstrap/scss/transitions";
 @import "../vendor/bootstrap/scss/alert";
+@import "../vendor/bootstrap/scss/helpers";
 
 @import "../vendor/bootstrap/scss/utilities/api";
 
 @import "theme/components";
 @import "theme/utilities";
+@import "theme/dark-mode";

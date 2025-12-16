@@ -58,6 +58,17 @@
   }
 }
 
+// Offset content for fixed navbar
+body {
+  padding-top: 4.5rem;
+}
+
+@media (max-width: 991.98px) {
+  body {
+    padding-top: 4rem;
+  }
+}
+
 // Hero Section
 .hero-section {
   padding: 6rem 0;
@@ -185,6 +196,7 @@
   }
 }
 
+
 // Customer Logos
 .customer-logo {
   img {
@@ -268,43 +280,6 @@ section {
   &.animate-in {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-// Dark Mode Specific Styles
-[data-bs-theme="dark"] {
-  .bg-light {
-    background-color: $apollo-dark-surface !important;
-  }
-  
-  .text-muted {
-    color: $apollo-dark-text-muted !important;
-  }
-  
-  .navbar-light {
-    background-color: $apollo-dark-surface !important;
-    
-    .navbar-brand,
-    .nav-link {
-      color: $apollo-dark-text !important;
-      
-      &:hover {
-        color: white !important;
-      }
-    }
-  }
-  
-  .card {
-    background-color: $apollo-dark-surface;
-    color: $apollo-dark-text;
-  }
-  
-  .site-footer {
-    background-color: $apollo-dark-bg !important;
-  }
-  
-  .border {
-    border-color: $apollo-dark-border !important;
   }
 }
 

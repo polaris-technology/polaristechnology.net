@@ -7,10 +7,10 @@
     {{- $bootstrapJS = $bootstrapJS | fingerprint -}}
   {{- end -}}
   <script src="{{ $bootstrapJS.RelPermalink }}" integrity="{{ $bootstrapJS.Data.Integrity }}" crossorigin="anonymous"></script>
-{{- else -}}
-  {{- /* Fallback to CDN if local Bootstrap JS not found */ -}}
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 {{- end -}}
+
+{{- /* CDN safety net to guarantee Bootstrap JS availability */ -}}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 {{- /* Custom site JavaScript */ -}}
 {{- $customJS := resources.Get "js/main.js" -}}

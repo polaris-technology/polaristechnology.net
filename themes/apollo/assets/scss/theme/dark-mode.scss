@@ -1,0 +1,121 @@
+// Dark mode CSS variables and color scheme management
+// This file handles automatic dark mode via prefers-color-scheme
+
+:root {
+  color-scheme: light dark;
+}
+
+// Light mode (default) - Bootstrap will handle most of this
+// We only need to define custom overrides
+
+// Dark mode via prefers-color-scheme
+@media (prefers-color-scheme: dark) {
+  :root {
+    // Bootstrap color overrides for dark mode
+    --bs-body-color: #{$apollo-dark-text};
+    --bs-body-bg: #{$apollo-dark-bg};
+    --bs-border-color: #{$apollo-dark-border};
+    --bs-secondary-bg: #{$apollo-dark-surface};
+    
+    // Link colors
+    --bs-link-color: lighten($primary, 20%);
+    --bs-link-hover-color: lighten($primary, 30%);
+    
+    // Text colors
+    --bs-text-muted: #{$apollo-dark-text-muted};
+    
+    // Card colors
+    --bs-card-bg: #{$apollo-dark-surface};
+    --bs-card-border-color: #{$apollo-dark-border};
+    
+    // Navbar colors
+    --bs-navbar-color: #{$apollo-dark-text};
+    --bs-navbar-hover-color: #fff;
+    --bs-navbar-active-color: #fff;
+    
+    // Form colors
+    --bs-form-control-bg: #{$apollo-dark-surface};
+    --bs-form-control-color: #{$apollo-dark-text};
+    --bs-form-control-border-color: #{$apollo-dark-border};
+  }
+  
+  // Specific component overrides that need more control
+  body {
+    background-color: $apollo-dark-bg;
+    color: $apollo-dark-text;
+  }
+  
+  .navbar-light {
+    background-color: $apollo-dark-surface !important;
+    
+    .navbar-brand,
+    .nav-link {
+      color: $apollo-dark-text !important;
+      
+      &:hover {
+        color: white !important;
+      }
+    }
+  }
+  
+  .bg-white {
+    background-color: $apollo-dark-surface !important;
+  }
+  
+  .bg-light {
+    background-color: $apollo-dark-surface !important;
+  }
+  
+  .text-muted {
+    color: $apollo-dark-text-muted !important;
+  }
+  
+  .text-dark {
+    color: $apollo-dark-text !important;
+  }
+  
+  .card {
+    background-color: $apollo-dark-surface;
+    color: $apollo-dark-text;
+    border-color: $apollo-dark-border;
+  }
+  
+  .border {
+    border-color: $apollo-dark-border !important;
+  }
+  
+  .site-footer {
+    background-color: $apollo-dark-bg !important;
+  }
+  
+  // Form controls
+  .form-control,
+  .form-select {
+    background-color: $apollo-dark-surface;
+    border-color: $apollo-dark-border;
+    color: $apollo-dark-text;
+    
+    &:focus {
+      background-color: $apollo-dark-surface;
+      border-color: var(--bs-primary);
+      color: $apollo-dark-text;
+    }
+    
+    &::placeholder {
+      color: $apollo-dark-text-muted;
+    }
+  }
+  
+  // Shadows
+  .shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  .shadow {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  .shadow-lg {
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.4) !important;
+  }
+}

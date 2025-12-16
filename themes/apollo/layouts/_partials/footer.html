@@ -1,0 +1,67 @@
+<footer class="site-footer bg-dark text-white-50 py-5" role="contentinfo">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4 mb-4 mb-lg-0">
+        <div class="footer-brand mb-3">
+          {{- with .Site.Params.logo -}}
+          <img src="{{ . }}" alt="{{ $.Site.Title }}" class="img-fluid mb-3" style="max-width: 150px;" loading="lazy">
+          {{- else -}}
+          <div class="logo-placeholder bg-white rounded p-3 d-inline-block mb-3">
+            <span class="text-dark fw-bold">{{ .Site.Title }}</span>
+          </div>
+          {{- end -}}
+        </div>
+        <p class="mb-3">{{ .Site.Params.footer_description | default "" }}</p>
+        {{- with .Site.Params.social -}}
+        <div class="social-links">
+          {{- with .twitter -}}
+          <a href="{{ . }}" class="text-white-50 me-3" aria-label="Twitter" target="_blank" rel="noopener">
+            <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+          </a>
+          {{- end -}}
+          {{- with .linkedin -}}
+          <a href="{{ . }}" class="text-white-50 me-3" aria-label="LinkedIn" target="_blank" rel="noopener">
+            <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+          </a>
+          {{- end -}}
+          {{- with .github -}}
+          <a href="{{ . }}" class="text-white-50 me-3" aria-label="GitHub" target="_blank" rel="noopener">
+            <i class="fab fa-github fa-lg" aria-hidden="true"></i>
+          </a>
+          {{- end -}}
+        </div>
+        {{- end -}}
+      </div>
+      
+      {{- range .Site.Params.footer_menus -}}
+      <div class="col-lg-2 col-6">
+        <h3 class="h6 text-white text-uppercase mb-3">{{ .title }}</h3>
+        <ul class="list-unstyled">
+          {{- range .links -}}
+          <li class="mb-2"><a href="{{ .url }}" class="text-white-50 text-decoration-none">{{ .name }}</a></li>
+          {{- end -}}
+        </ul>
+      </div>
+      {{- end -}}
+    </div>
+    
+    <hr class="border-secondary my-4">
+    
+    <div class="row">
+      <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+        <small>&copy; {{ now.Year }} {{ .Site.Params.copyright | default .Site.Title }}. All rights reserved.</small>
+      </div>
+      {{- with .Site.Params.footer_legal_links -}}
+      <div class="col-md-6 text-center text-md-end">
+        <small>
+          {{- $links := . -}}
+          {{- range $index, $link := $links -}}
+          {{- if gt $index 0 }} {{ end -}}
+          <a href="{{ $link.url }}" class="text-white-50 text-decoration-none{{ if lt (add $index 1) (len $links) }} me-3{{ end }}">{{ $link.name }}</a>
+          {{- end -}}
+        </small>
+      </div>
+      {{- end -}}
+    </div>
+  </div>
+</footer>
